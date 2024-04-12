@@ -1,4 +1,5 @@
 import {
+  ActivityType,
   ApplicationCommandDataResolvable,
   ChatInputCommandInteraction,
   Client,
@@ -31,6 +32,7 @@ export class Bot {
 
     this.client.on("ready", () => {
       console.log(`${this.client.user!.username} ready!`);
+      this.client.user?.setPresence({ activities: [{ name: 'Spotify',  type: ActivityType.Listening }], status: 'online' })
 
       this.registerSlashCommands();
     });
